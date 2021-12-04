@@ -6,7 +6,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func NewHTTOServer(addr string) *http.Server{
+func NewHTTPServer(addr string) *http.Server{
 	httpsrv := newHTTPServer()
 	r := mux.NewRouter()
 	r.HandleFunc("/", httpsrv.handleProduce).Methods("POST")
@@ -43,7 +43,7 @@ type ConsumeResponse struct {
 	Record Record `json:"record"`
 }
 
-func​ (s *httpServer) handleProduce(w http.ResponseWriter, r *http.Request) { ​  
+func​(s *httpServer) handleProduce(w http.ResponseWriter, r *http.Request) { ​  
 	​var​ req ProduceRequest ​  
 	err := json.NewDecoder(r.Body).Decode(&req) ​  
 	​if​ err != nil { ​  
